@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 // youtube API key
 const API_KEY = 'AIzaSyDfyiymG6qCLhbUeYTHJLdt527JFvGc5dU';
 
-
 // Create a new component. This component should produce some HTML
 const App = () => <div>Hi ho!</div>;
 
