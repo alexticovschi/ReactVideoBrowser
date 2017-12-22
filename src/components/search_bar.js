@@ -12,7 +12,7 @@ class SearchBar extends Component {
         // the event handler will be triggered whenever the event occurs
         // when the input changes, onInputChange will be executed;
         return (
-            <div>
+            <div className="search-bar">
                 {/* whenever we update the input element, whenever we change the value of it 
                     we change the state(this.state.term) of the element with the new value of the input 
                     - whenever we update our state, whenever we call this.setState it causes our component to automatically rerender
