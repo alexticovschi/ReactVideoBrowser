@@ -1,11 +1,12 @@
 import React from 'react';
 
-
-const VideoListItem = ({video}) => {
+// VideoListItem takes the onVideoSelect property and says ...
+// whenever I get clicked call that function with the video that I was passed
+const VideoListItem = ({video, onVideoSelect}) => {
     const imageUrl = video.snippet.thumbnails.default.url;
     console.log(video);
     return (
-        <li className="list-group-item">
+        <li onClick={() => onVideoSelect(video)} className="list-group-item">
             <div className="video-list media">
                 <div className="media-left">
                     <img className="media-object" src={imageUrl} />
