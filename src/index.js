@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar'; // import the component from search_bar.js
 import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 const API_KEY = 'AIzaSyDfyiymG6qCLhbUeYTHJLdt527JFvGc5dU'; // youtube API key
 
 
@@ -18,16 +19,11 @@ class App extends Component {
         });
     }
 
-    //state = { videos: [] };
-
     render() {  
-        // YTSearch({key: API_KEY, term: 'grey cats'}, (videos) => {
-        //     this.setState({ videos: videos });
-        // });
-
         return (
             <div>
                 <SearchBar />
+                <VideoDetail video={this.state.videos[0]} />
                 <VideoList videos={this.state.videos} />
             </div>
         );
