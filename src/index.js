@@ -22,7 +22,15 @@ class App extends Component {
             selectedVideo: null
         };
 
-        YTSearch({key: API_KEY, term: 'grey cats'}, (videos) => {
+        this.videoSearch('funny cats');
+
+    }
+
+    // We are going to pass a callback into the SearchBar
+    // The callback passed to SearchBar is going to take a string, a search term, and make a new search
+    // When the search is complete it will set the state of the new list of videos
+    videoSearch(term) {
+        YTSearch({key: API_KEY, term: term}, (videos) => {
             this.setState({ 
                 videos: videos,
                 selectedVideo: videos[0]
@@ -30,10 +38,13 @@ class App extends Component {
         });
     }
 
+
     render() {  
         return (
             <div>
-                <SearchBar />
+                {/* When SearchBar calls onSearchTermChange it will do so  with a search term(a string)
+                    that will be sent into videoSearch and it will do a YouTube search */}
+                <SearchBar onSearchTermChange={term => this.videoSearch(term)} />
                 <VideoDetail video={this.state.selectedVideo} />
                 <VideoList 
                     // this function updates App state with a new video
@@ -45,7 +56,6 @@ class App extends Component {
         );
     }
 }
-
 
 
 // Take the component's generated HTML and put it on the page (in the DOM)

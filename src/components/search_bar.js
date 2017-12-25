@@ -13,16 +13,18 @@ class SearchBar extends Component {
         // when the input changes, onInputChange will be executed;
         return (
             <div className="search-bar">
-                {/* whenever we update the input element, whenever we change the value of it 
-                    we change the state(this.state.term) of the element with the new value of the input 
-                    - whenever we update our state, whenever we call this.setState it causes our component to automatically rerender
-                      and push all the updated information into the DOM*/}
-                <input onChange={event => this.setState({ term: event.target.value })} />
+                {/* Whenever the input is changed, onChange will call onInputChange with the new value from the input itself */}
+                <input onChange={event => this.onInputChange( event.target.value )} />
                 <br/>
-                {this.state.term}
+                {/* {this.state.term} */}
             </div>
             
         );
+    }
+
+    onInputChange(term) {
+        this.setState({term}); // set the state of this component
+        this.props.onSearchTermChange(term); // call onSearchTermChange with the new term
     }
 
     
