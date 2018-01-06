@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
@@ -40,11 +41,16 @@ class App extends Component {
 
 
     render() {  
+        // pass the far arrow function to _.debounce()
+        // _.debounce takes the inner function(the function that we passed) and returns a new function 
+        // ... that can be called one every 700ms
+        const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 500);
+
         return (
             <div>
                 {/* When SearchBar calls onSearchTermChange it will do so  with a search term(a string)
                     that will be sent into videoSearch and it will do a YouTube search */}
-                <SearchBar onSearchTermChange={term => this.videoSearch(term)} />
+                <SearchBar onSearchTermChange={videoSearch} />
                 <VideoDetail video={this.state.selectedVideo} />
                 <VideoList 
                     // this function updates App state with a new video
